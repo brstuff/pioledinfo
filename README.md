@@ -1,9 +1,8 @@
-# OLED Stats
+# RaspberryPI Info Oled
 
-OLED Stats Display Script For Raspberry Pi
-
-Full setup instructions available on my blog - https://www.the-diy-life.com/add-an-oled-stats-display-to-raspberry-pi-os-bullseye/
-Or my Youtube Channel - https://youtu.be/lRTQ0NsXMuw
+## Forked from OLED Stats
+- https://www.the-diy-life.com/add-an-oled-stats-display-to-raspberry-pi-os-bullseye/
+- https://github.com/mklements/OLED_Stats
 
 The script is pre-configured for 128x64 I2C OLED Display, but can easily be modified to run on a 128x32 I2C OLED Display
 
@@ -85,9 +84,9 @@ The script is pre-configured for 128x64 I2C OLED Display, but can easily be modi
     $ cd OLED_Stats
     $ cp PixelOperator.ttf ~/PixelOperator.ttf
     $ cp stats.py ~/stats.py
-    
+
     $ cp psutilstats.py ~/psutilstats.py
-    
+
     $ cp lineawesome-webfont.ttf ~/lineawesome-webfont.ttf
     $ cp monitor.py ~/monitor.py
 
@@ -107,9 +106,9 @@ Remember to change your username (pi below) if you're not using the default user
     @reboot python3 /home/pi/stats.py &
 
     OR
-    
+
     @reboot python3 /home/pi/psutilstats.py &
-    
+
     OR
 
     @reboot python3 /home/pi/monitor.py &
