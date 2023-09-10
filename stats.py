@@ -10,10 +10,10 @@ GPIO.setmode(GPIO.BCM)
 button_pin = 17  # GPIO Pin Button change screen
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-# Define o objeto de série I2C
+# Define I2C
 serial = i2c(port=1, address=0x3C)
 
-# Configuração do display
+# display
 WIDTH = 128
 HEIGHT = 64
 
@@ -27,7 +27,6 @@ def display1():
     font = ImageFont.truetype('PixelOperator.ttf', 16)
     draw.rectangle((0, 0, WIDTH, HEIGHT), outline=0, fill=0)
 
-    # Shell scripts para monitoramento do sistema
     cmd = "hostname -I | cut -d' ' -f1"
     IP = subprocess.check_output(cmd, shell=True).decode("utf-8")
     cmd = "top -bn1 | grep load | awk '{printf \"CPU: %.2f\", $(NF-2)}'"
@@ -39,14 +38,12 @@ def display1():
     cmd = "vcgencmd measure_temp |cut -f 2 -d '='"
     Temp = subprocess.check_output(cmd, shell=True).decode("utf-8")
 
-    # Exibir estatísticas do Pi no display
     draw.text((0, 0), "IP: " + IP, font=font, fill=255)
     draw.text((0, 16), CPU + " LA", font=font, fill=255)
     draw.text((80, 16), Temp, font=font, fill=255)
     draw.text((0, 32), MemUsage, font=font, fill=255)
     draw.text((0, 48), Disk, font=font, fill=255)
 
-    # Exibir a imagem no display
     device.display(image)
 
 
@@ -54,16 +51,13 @@ def display2():
     font = ImageFont.truetype('PixelOperator.ttf', 45)
     draw.rectangle((0, 0, WIDTH, HEIGHT), outline=0, fill=0)
 
-    # Obtenha a hora atual
     now = datetime.datetime.now()
     current_time = now.strftime("%H:%M")
 
-    # Exiba a hora no centro do display
     x = 15
     y = 15
     draw.text((x, y), current_time, font=font, fill=255)
 
-    # Exibir imagem no display
     device.display(image)
 
 
@@ -80,10 +74,8 @@ while True:
         else:
             current_function = display1
 
-    # Chama a função atual
     current_function()
 
-    # Aguarda um pequeno intervalo para evitar detecções múltiplas
     time.sleep(1)
 
 
