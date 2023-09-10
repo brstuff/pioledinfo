@@ -1,14 +1,14 @@
 # RaspberryPI Info Oled
 
+## RaspberryPI Info Oled changes
+- Default display for clock
+- GPIO 17 Button to change between displays
+
 ## Forked from OLED Stats
 - https://www.the-diy-life.com/add-an-oled-stats-display-to-raspberry-pi-os-bullseye/
 - https://github.com/mklements/OLED_Stats
 
 The script is pre-configured for 128x64 I2C OLED Display, but can easily be modified to run on a 128x32 I2C OLED Display
-
-## RaspberryPI Info Oled changes
-- Default display for clock
-- GPIO 17 Button to change between displays
 
 ## Screenshots:
 
