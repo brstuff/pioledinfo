@@ -1,6 +1,7 @@
 # RaspberryPI Info Oled
 
 ## RaspberryPI Info Oled changes
+- Change script for work with SH1106
 - Default display for clock
 - GPIO 17 Button to change between displays
 
