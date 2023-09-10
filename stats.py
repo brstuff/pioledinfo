@@ -1,13 +1,13 @@
 import time
 import subprocess
 import RPi.GPIO as GPIO
+import datetime
 from luma.core.interface.serial import i2c
 from luma.oled.device import sh1106
 from PIL import Image, ImageDraw, ImageFont
 
-# Configuração dos pinos GPIO
 GPIO.setmode(GPIO.BCM)
-button_pin = 17  # Substitua pelo número do pino GPIO que você está usando
+button_pin = 17  # GPIO Pin Button change screen
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Define o objeto de série I2C
@@ -17,19 +17,14 @@ serial = i2c(port=1, address=0x3C)
 WIDTH = 128
 HEIGHT = 64
 
-# Inicialize o dispositivo OLED SSH1106
+# Start Device OLED SSH1106
 device = sh1106(serial, width=WIDTH, height=HEIGHT, rotate=0)
 
-# Crie uma imagem em branco para desenhar
 image = Image.new("1", (WIDTH, HEIGHT))
-
-# Obtenha o objeto de desenho para desenhar na imagem
 draw = ImageDraw.Draw(image)
 
-# Crie uma fonte
-font = ImageFont.truetype('PixelOperator.ttf', 16)
-
 def display1():
+    font = ImageFont.truetype('PixelOperator.ttf', 16)
     draw.rectangle((0, 0, WIDTH, HEIGHT), outline=0, fill=0)
 
     # Shell scripts para monitoramento do sistema
@@ -56,15 +51,26 @@ def display1():
 
 
 def display2():
+    font = ImageFont.truetype('PixelOperator.ttf', 45)
     draw.rectangle((0, 0, WIDTH, HEIGHT), outline=0, fill=0)
-    draw.text((0, 48), "teste", font=font, fill=255)
 
-    # Exibir a imagem no display
+    # Obtenha a hora atual
+    now = datetime.datetime.now()
+    current_time = now.strftime("%H:%M")
+
+    # Exiba a hora no centro do display
+    x = 15
+    y = 15
+    draw.text((x, y), current_time, font=font, fill=255)
+
+    # Exibir imagem no display
     device.display(image)
 
 
 
-current_function = display1
+
+# Default start screen
+current_function = display2
 while True:
     # Verifica se o botão foi pressionado
     if GPIO.input(button_pin) == GPIO.LOW:

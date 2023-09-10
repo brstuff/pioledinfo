@@ -6,6 +6,10 @@
 
 The script is pre-configured for 128x64 I2C OLED Display, but can easily be modified to run on a 128x32 I2C OLED Display
 
+## RaspberryPI Info Oled changes
+- Default display for clock
+- GPIO 17 Button to change between displays
+
 ## Screenshots:
 
 <table align="center" style="margin: 0px auto;">
