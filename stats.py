@@ -66,9 +66,7 @@ def display2():
 # Default start screen
 current_function = display2
 while True:
-    # Verifica se o botão foi pressionado
     if GPIO.input(button_pin) == GPIO.LOW:
-        # Alterna entre as funções
         if current_function == display1:
             current_function = display2
         else:
