@@ -2,8 +2,11 @@
 
 ## RaspberryPI Info Oled changes
 - Change script for work with SH1106
+- Multiple info display
+    - Clock
+    - Stats
 - Default display for clock
-- GPIO 17 Button to change between displays
+- GPIO 17 Button press to change between displays
 
 ## Forked from OLED Stats
 - https://www.the-diy-life.com/add-an-oled-stats-display-to-raspberry-pi-os-bullseye/
@@ -77,6 +80,7 @@ The script is pre-configured for 128x64 I2C OLED Display, but can easily be modi
 ```shell
     $ sudo pip3 install adafruit-circuitpython-ssd1306
     $ sudo pip3 install psutil
+    $ sudo pip3 install luma.oled
     $ sudo reboot
     $ sudo apt-get install python3-pil
 ```
@@ -84,7 +88,7 @@ The script is pre-configured for 128x64 I2C OLED Display, but can easily be modi
 7. Now we need to download the python script from out github:
 
 ```shell
-    $ git clone https://github.com/mklements/OLED_Stats.git
+    $ git clone https://github.com/brstuff/pioledinfo.git
 
     $ cd OLED_Stats
     $ cp PixelOperator.ttf ~/PixelOperator.ttf
@@ -109,10 +113,6 @@ Remember to change your username (pi below) if you're not using the default user
 
 ```
     @reboot python3 /home/pi/stats.py &
-
-    OR
-
-    @reboot python3 /home/pi/psutilstats.py &
 
     OR
 
