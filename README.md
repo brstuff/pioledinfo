@@ -2,7 +2,7 @@
 
 ## RaspberryPI Info Oled changes
 - Change script for work with SH1106
-- Multiple info display
+- Multiple info display (stats.py)
     - Clock
     - Stats
 - Default display for clock
