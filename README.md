@@ -90,7 +90,7 @@ The script is pre-configured for 128x64 I2C OLED Display, but can easily be modi
 ```shell
     $ git clone https://github.com/brstuff/pioledinfo.git
 
-    $ cd OLED_Stats
+    $ cd pioledinfo
     $ cp PixelOperator.ttf ~/PixelOperator.ttf
     $ cp stats.py ~/stats.py
 
