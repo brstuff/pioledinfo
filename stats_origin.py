@@ -8,7 +8,7 @@ import busio
 import digitalio
 
 from PIL import Image, ImageDraw, ImageFont
-import adafruit_ssd1106
+import adafruit_ssd1306
 
 import subprocess
 
@@ -25,7 +25,7 @@ LOOPTIME = 1.0
 
 # Use for I2C.
 i2c = board.I2C()
-oled = adafruit_ssd1106.SSD1106_I2C(WIDTH, HEIGHT, i2c, addr=0x3C, reset=oled_reset)
+oled = adafruit_ssd1306.SSD1106_I2C(WIDTH, HEIGHT, i2c, addr=0x3C, reset=oled_reset)
 
 # Clear display.
 oled.fill(0)
@@ -67,7 +67,7 @@ while True:
     draw.text((80, 16), str(Temp,'utf-8') , font=font, fill=255)
     draw.text((0, 32), str(MemUsage,'utf-8'), font=font, fill=255)
     draw.text((0, 48), str(Disk,'utf-8'), font=font, fill=255)
-        
+
     # Display image
     oled.image(image)
     oled.show()
