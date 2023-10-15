@@ -31,7 +31,7 @@ def display1():
     IP = subprocess.check_output(cmd, shell=True).decode("utf-8")
     cmd = "top -bn1 | grep \"Cpu(s)\" | awk '{printf \"CPU: %.1f%%\", $2}'"
     CPU = subprocess.check_output(cmd, shell=True).decode("utf-8")
-    cmd = "free -m | awk 'NR==2{printf \"Mem: %s/%sMB %.2f%%\", $3,$2,$3*100/$2 }'"
+    cmd = "free -m | awk 'NR==2{printf \"Mem: %s/%.0fGB %.1f%%\", $3,$2/1024,$3*100/$2 }'"
     MemUsage = subprocess.check_output(cmd, shell=True).decode("utf-8")
     cmd = "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%dGB %s\", $3,$2,$5}'"
     Disk = subprocess.check_output(cmd, shell=True).decode("utf-8")
@@ -39,8 +39,8 @@ def display1():
     Temp = subprocess.check_output(cmd, shell=True).decode("utf-8")
 
     draw.text((0, 0), "IP: " + IP, font=font, fill=255)
-    draw.text((0, 16), CPU + " LA", font=font, fill=255)
-    draw.text((80, 16), Temp, font=font, fill=255)
+    draw.text((0, 16), CPU, font=font, fill=255)
+    draw.text((75, 16), Temp, font=font, fill=255)
     draw.text((0, 32), MemUsage, font=font, fill=255)
     draw.text((0, 48), Disk, font=font, fill=255)
 
